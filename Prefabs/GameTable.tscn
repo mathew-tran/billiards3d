@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://8p1hkdfejvo3"]
+
+[ext_resource type="PackedScene" uid="uid://drc40np5nvhtw" path="res://Art/BilliardTable/BillardTable.gltf" id="1_55asd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dvht7"]
+size = Vector3(10, 8, 12.435)
+
+[node name="Table" type="StaticBody3D"]
+
+[node name="blockbench_export" parent="." instance=ExtResource("1_55asd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58537, 0)
+shape = SubResource("BoxShape3D_dvht7")

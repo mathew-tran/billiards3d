@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7jhw5x6o1ycc"]
+
+[ext_resource type="PackedScene" uid="uid://dgkea7e4r6tre" path="res://Art/Stick/Stick.gltf" id="1_2niw4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_idj7w"]
+size = Vector3(0.0649414, 0.0524139, 0.839417)
+
+[node name="Stick" type="RigidBody3D"]
+transform = Transform3D(0.36356, 0, 0.931571, 0, 1, 0, -0.931571, 0, 0.36356, 0, 0, 0)
+
+[node name="blockbench_export" parent="." instance=ExtResource("1_2niw4")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00317383, 0.00199127, -0.0802917)
+shape = SubResource("BoxShape3D_idj7w")
