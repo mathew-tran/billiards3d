@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bm0lh6u2puk3m"]
+[gd_scene load_steps=4 format=3 uid="uid://bm0lh6u2puk3m"]
 
 [ext_resource type="PackedScene" uid="uid://8p1hkdfejvo3" path="res://Prefabs/GameTable.tscn" id="1_r150o"]
 [ext_resource type="PackedScene" uid="uid://b7jhw5x6o1ycc" path="res://Prefabs/Stick.tscn" id="2_kln2b"]
 [ext_resource type="PackedScene" uid="uid://1f5llixnffda" path="res://Prefabs/Ball.tscn" id="3_pbw6q"]
-[ext_resource type="Script" uid="uid://ddpbm0okhh406" path="res://Scripts/Inspector.gd" id="4_pbw6q"]
-[ext_resource type="PackedScene" uid="uid://dmcry73m6hkra" path="res://Art/Player/Player.gltf" id="5_v1gob"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -15,7 +13,7 @@ size = Vector3(200, 1, 200)
 [node name="Table" parent="." instance=ExtResource("1_r150o")]
 
 [node name="Stick" parent="." instance=ExtResource("2_kln2b")]
-transform = Transform3D(0.36356, 0, 0.931571, 0, 1, 0, -0.931571, 0, 0.36356, 0, 6.5231, 3.09349)
+transform = Transform3D(0.543174, 0, 0.83962, 0, 1, 0, -0.83962, 0, 0.543174, 0, 6.5231, 3.09349)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.224423, 0.970296, -0.0903372, -0.97355, -0.219167, 0.0645405, 0.0428245, 0.102432, 0.993818, 0, 0, 0)
@@ -25,14 +23,4 @@ transform = Transform3D(-0.699405, -0.447698, -0.557134, -0.674211, 0.671985, 0.
 light_color = Color(0.561409, 0.467204, 0.0224809, 1)
 
 [node name="Ball" parent="." instance=ExtResource("3_pbw6q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61357, 5.42285, -0.084795)
-
-[node name="Inspector" type="Node3D" parent="."]
-transform = Transform3D(1, 0, -2.38419e-07, 0, 1, 0, 2.38419e-07, 0, 1, 0, 5, 0.0111997)
-script = ExtResource("4_pbw6q")
-
-[node name="blockbench_export" parent="Inspector" instance=ExtResource("5_v1gob")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38419e-07, 0, 4)
-
-[node name="Camera3D" type="Camera3D" parent="Inspector/blockbench_export"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.14421, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61357, 5.42285, 1.51301)

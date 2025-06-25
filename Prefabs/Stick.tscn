@@ -1,15 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7jhw5x6o1ycc"]
+[gd_scene load_steps=4 format=3 uid="uid://b7jhw5x6o1ycc"]
 
 [ext_resource type="PackedScene" uid="uid://dgkea7e4r6tre" path="res://Art/Stick/Stick.gltf" id="1_2niw4"]
+[ext_resource type="Script" uid="uid://d2un8ex5ba6xr" path="res://Scripts/Player.gd" id="1_krp1i"]
+[ext_resource type="PackedScene" uid="uid://dmcry73m6hkra" path="res://Art/Player/Player.gltf" id="2_ntaji"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_idj7w"]
-size = Vector3(0.0649414, 0.0524139, 0.839417)
+[node name="Stick" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_krp1i")
 
-[node name="Stick" type="RigidBody3D"]
-transform = Transform3D(0.36356, 0, 0.931571, 0, 1, 0, -0.931571, 0, 0.36356, 0, 0, 0)
+[node name="stick" parent="." instance=ExtResource("1_2niw4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.105617, 0, 0.564983)
 
-[node name="blockbench_export" parent="." instance=ExtResource("1_2niw4")]
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866026, -0.212874, 0.863263, 1.60562)
+current = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00317383, 0.00199127, -0.0802917)
-shape = SubResource("BoxShape3D_idj7w")
+[node name="blockbench_export2" parent="." instance=ExtResource("2_ntaji")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.272522, -0.0509157, 0.839932)
