@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://1f5llixnffda"]
+
+[ext_resource type="PackedScene" uid="uid://ckepopx4hvksg" path="res://Art/BilliardBall/Ball.gltf" id="1_f8b65"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kln2b"]
+radius = 0.0783063
+
+[node name="Ball" type="RigidBody3D" groups=["MainBall"]]
+
+[node name="blockbench_export" parent="." instance=ExtResource("1_f8b65")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_kln2b")

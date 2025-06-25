@@ -14,3 +14,7 @@ config/name="billiards3d"
 run/main_scene="uid://bm0lh6u2puk3m"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Finder="*res://Scripts/Autoload/Finder.gd"

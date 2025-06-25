@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://drc40np5nvhtw" path="res://Art/BilliardTable/BillardTable.gltf" id="1_55asd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dvht7"]
-size = Vector3(10, 8, 12.435)
+size = Vector3(5, 3.41785, 6.66125)
 
 [node name="Table" type="StaticBody3D"]
 
@@ -11,5 +11,5 @@ size = Vector3(10, 8, 12.435)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58537, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.29429, -0.00140381)
 shape = SubResource("BoxShape3D_dvht7")
