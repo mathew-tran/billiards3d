@@ -44,4 +44,9 @@ scroll_down={
 
 [physics]
 
+3d/run_on_separate_thread=true
+common/physics_ticks_per_second=80
+common/max_physics_steps_per_frame=15
 3d/physics_engine="Jolt Physics"
+3d/solver/solver_iterations=20
+common/physics_interpolation=true

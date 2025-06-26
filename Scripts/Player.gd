@@ -118,7 +118,7 @@ func GetPower():
 	var direction = -transform.basis.z
 	direction.y = 0
 	direction = direction.normalized()
-	var value = lerp(3, 25, CurrentStrength/MaxStrength)
+	var value = lerp(3, 20, CurrentStrength/MaxStrength)
 	return direction * value
 		
 func OnStateUpdate(state : Ball.MOVE_STATE):
