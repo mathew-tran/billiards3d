@@ -13,7 +13,7 @@ size = Vector3(200, 1, 200)
 [node name="Table" parent="." instance=ExtResource("1_r150o")]
 
 [node name="Stick" parent="." instance=ExtResource("2_kln2b")]
-transform = Transform3D(0.543174, 0, 0.83962, 0, 1, 0, -0.83962, 0, 0.543174, 0, 6.5231, 3.09349)
+transform = Transform3D(0.543174, 0, 0.83962, 0, 1, 0, -0.83962, 0, 0.543174, -1.84413, 6.5231, 1.90047)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.224423, 0.970296, -0.0903372, -0.97355, -0.219167, 0.0645405, 0.0428245, 0.102432, 0.993818, 0, 0, 0)

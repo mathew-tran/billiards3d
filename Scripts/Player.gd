@@ -1,6 +1,6 @@
 extends Node3D
 
-var OffsetAmount = .01
+var OffsetAmount = .12
 
 signal StoppedMoving
 
@@ -10,6 +10,13 @@ enum STATE {
 }
 var OriginalPosition = Vector3.ZERO
 var CurrentState = STATE.DECIDING
+var CurrentDirection = Vector3(1,0,0)
+
+var LastMousePosition = Vector2.ZERO
+var RotateSpeed = 2
+
+var CameraRotationLimit = Vector2(-20, -5)
+var ScrollSpeed = 200
 
 func _ready() -> void:
 	MoveToBall()
@@ -17,24 +24,41 @@ func _ready() -> void:
 	
 func MoveToBall():
 	
-	var direction = (Finder.GetMainBall().global_position - global_position).normalized()
-	direction.x = 0
-	var newPosition = global_position + direction * OffsetAmount
+	var newPosition = Finder.GetMainBall().global_position
 	global_position = newPosition
-	global_position -= Vector3(0,.01,0)
+	global_position += Vector3(0, .01, .0)
+	global_position -= CurrentDirection * OffsetAmount
 	var newDirection = (Finder.GetMainBall().global_position - newPosition).normalized()
-	global_position = Finder.GetMainBall().global_position
-	
-	#rotation.x = 0
-	
+	look_at(Finder.GetMainBall().global_position)
+	print(CurrentDirection)
 func _process(delta: float) -> void:
-	pass
-	$stick.look_at(Finder.GetMainBall().global_position)
-	
+	if CanShoot():
+		if Input.is_action_just_released("scroll_up"):
+			$Camera3D.rotation_degrees.x += ScrollSpeed * delta
+			if $Camera3D.rotation_degrees.x > CameraRotationLimit.y:
+				$Camera3D.rotation_degrees.x = CameraRotationLimit.y
+		elif Input.is_action_just_released("scroll_down"):
+			$Camera3D.rotation_degrees.x -= ScrollSpeed * delta
+			if $Camera3D.rotation_degrees.x < CameraRotationLimit.x:
+				$Camera3D.rotation_degrees.x = CameraRotationLimit.x
+				
+		print($Camera3D.rotation)
+		if Input.is_action_pressed("right_click"):
+			var newPosition = get_viewport().get_mouse_position()
+			if LastMousePosition != Vector2.ZERO or LastMousePosition != newPosition:
+				if newPosition.x > LastMousePosition.x:
+					CurrentDirection = CurrentDirection.rotated(Vector3.UP, -RotateSpeed * delta)
+				elif newPosition.x < LastMousePosition.x:
+					CurrentDirection = CurrentDirection.rotated(Vector3.UP, RotateSpeed * delta)
+				MoveToBall()
+			LastMousePosition = newPosition
+	else:
+		
+		look_at(Finder.GetMainBall().global_position)
 func CanShoot():
 	return CurrentState == STATE.DECIDING
 	
-func _input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:		
 	if event.is_action_pressed("left_click"):
 		if CanShoot() == false:
 			return
