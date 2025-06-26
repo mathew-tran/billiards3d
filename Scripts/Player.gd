@@ -6,7 +6,8 @@ signal StoppedMoving
 
 enum STATE {
 	DECIDING,
-	HITTING
+	START,
+	WAITING
 }
 var OriginalPosition = Vector3.ZERO
 var CurrentState = STATE.DECIDING
@@ -17,6 +18,12 @@ var RotateSpeed = 2
 
 var CameraRotationLimit = Vector2(-20, -5)
 var ScrollSpeed = 200
+
+var MinStrength = 0
+var MaxStrength = 100
+var bGrowing = true
+var CurrentStrength = 0
+var StrengthRate = 50
 
 func _ready() -> void:
 	MoveToBall()
@@ -31,7 +38,12 @@ func MoveToBall():
 	var newDirection = (Finder.GetMainBall().global_position - newPosition).normalized()
 	look_at(Finder.GetMainBall().global_position)
 	print(CurrentDirection)
+	
+func IsShootingTime():
+	return CurrentState == STATE.START
+	
 func _process(delta: float) -> void:
+	UpdateProgressBar()
 	if CanShoot():
 		if Input.is_action_just_released("scroll_up"):
 			$Camera3D.rotation_degrees.x += ScrollSpeed * delta
@@ -52,17 +64,44 @@ func _process(delta: float) -> void:
 					CurrentDirection = CurrentDirection.rotated(Vector3.UP, RotateSpeed * delta)
 				MoveToBall()
 			LastMousePosition = newPosition
+			
+		if Input.is_action_just_released("left_click"):
+			CurrentState = STATE.START
+			CurrentStrength = MinStrength
+			bGrowing = true
+			$Camera3D.rotation_degrees.x = CameraRotationLimit.x
 	else:
-		
 		look_at(Finder.GetMainBall().global_position)
+		
+	if IsShootingTime():
+		if bGrowing:
+			CurrentStrength += delta * StrengthRate
+			if CurrentStrength > MaxStrength:
+				CurrentStrength = MaxStrength
+				bGrowing = false
+		else:
+			CurrentStrength -= delta * StrengthRate
+			if CurrentStrength < MinStrength:
+				CurrentStrength = MinStrength
+				bGrowing = true
+				
+		if Input.is_action_just_pressed("right_click"):
+			CurrentState = STATE.DECIDING
+		if Input.is_action_just_pressed("left_click"):
+			ShootBall()
+
+func UpdateProgressBar():
+	if IsShootingTime():
+		$CanvasLayer/ProgressBar.visible = true
+	else:
+		$CanvasLayer/ProgressBar.visible = false
+	$CanvasLayer/ProgressBar.value = CurrentStrength
+	
 func CanShoot():
 	return CurrentState == STATE.DECIDING
 	
-func _input(event: InputEvent) -> void:		
-	if event.is_action_pressed("left_click"):
-		if CanShoot() == false:
-			return
-		CurrentState = STATE.HITTING
+func ShootBall():
+		CurrentState = STATE.WAITING
 		OriginalPosition = $stick.global_position
 		var tween = get_tree().create_tween()
 		tween.tween_property($stick, "global_position", lerp($stick.global_position, Finder.GetMainBall().global_position, .1), .1)
@@ -72,13 +111,12 @@ func _input(event: InputEvent) -> void:
 		tween.tween_property($stick, "global_position", OriginalPosition, .1)
 		await tween.finished
 		
-			
-		
 func GetPower():
 	var direction = -transform.basis.z
 	direction.y = 0
 	direction = direction.normalized()
-	return direction * 1
+	var value = lerp(1, 15, CurrentStrength/MaxStrength)
+	return direction * value
 		
 func OnStateUpdate(state : Ball.MOVE_STATE):
 	if state == Ball.MOVE_STATE.IDLE:

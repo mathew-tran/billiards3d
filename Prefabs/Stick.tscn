@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7jhw5x6o1ycc"]
+[gd_scene load_steps=5 format=3 uid="uid://b7jhw5x6o1ycc"]
 
 [ext_resource type="PackedScene" uid="uid://dgkea7e4r6tre" path="res://Art/Stick/Stick.gltf" id="1_2niw4"]
 [ext_resource type="Script" uid="uid://d2un8ex5ba6xr" path="res://Scripts/Player.gd" id="1_krp1i"]
 [ext_resource type="PackedScene" uid="uid://dmcry73m6hkra" path="res://Art/Player/Player.gltf" id="2_ntaji"]
+[ext_resource type="Texture2D" uid="uid://tdcjn60pdvvu" path="res://Art/UI/StrengthBar.png" id="4_pe5mr"]
 
 [node name="Stick" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0212802, 0, 0)
@@ -21,3 +22,24 @@ fov = 37.7
 
 [node name="blockbench_export2" parent="." instance=ExtResource("2_ntaji")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16583, -0.0755394, 0.839932)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -57.0
+offset_right = 64.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 20.0
+texture_under = ExtResource("4_pe5mr")
+texture_over = ExtResource("4_pe5mr")
+texture_progress = ExtResource("4_pe5mr")
+tint_under = Color(0, 0, 0, 1)
+tint_over = Color(1, 1, 1, 0)
