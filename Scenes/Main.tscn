@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bm0lh6u2puk3m"]
+[gd_scene load_steps=5 format=3 uid="uid://bm0lh6u2puk3m"]
 
 [ext_resource type="PackedScene" uid="uid://8p1hkdfejvo3" path="res://Prefabs/GameTable.tscn" id="1_r150o"]
 [ext_resource type="PackedScene" uid="uid://b7jhw5x6o1ycc" path="res://Prefabs/Stick.tscn" id="2_kln2b"]
 [ext_resource type="PackedScene" uid="uid://1f5llixnffda" path="res://Prefabs/Ball.tscn" id="3_pbw6q"]
+[ext_resource type="PackedScene" uid="uid://dg5vm838kifok" path="res://Prefabs/NonMainBall.tscn" id="4_rgh2o"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -16,11 +17,59 @@ size = Vector3(200, 1, 200)
 transform = Transform3D(0.543174, 0, 0.83962, 0, 1, 0, -0.83962, 0, 0.543174, -1.84413, 6.5231, 1.90047)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.224423, 0.970296, -0.0903372, -0.97355, -0.219167, 0.0645405, 0.0428245, 0.102432, 0.993818, 0, 0, 0)
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.699405, -0.447698, -0.557134, -0.674211, 0.671985, 0.30639, 0.237216, 0.589917, -0.771833, 0, 0, 0)
-light_color = Color(0.561409, 0.467204, 0.0224809, 1)
+transform = Transform3D(-0.851127, 0.500952, 0.156936, -0.277425, -0.683022, 0.67566, 0.445664, 0.531535, 0.720315, -0.805803, 8.14736, -3.29392)
+light_color = Color(0.496183, 0.49584, 5.77569e-07, 1)
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 0.0
+shadow_reverse_cull_face = true
+shadow_transmittance_bias = -16.0
+shadow_blur = 0.611
 
 [node name="Ball" parent="." instance=ExtResource("3_pbw6q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61357, 5.42285, 1.51301)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011361, 5.07499, 2.32623)
+
+[node name="Ball2" parent="." instance=ExtResource("4_rgh2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.388984, 5.09229, -1.47953)
+
+[node name="Ball3" parent="." instance=ExtResource("4_rgh2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.388984, 5.09229, -1.31536)
+
+[node name="Ball4" parent="." instance=ExtResource("4_rgh2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.388984, 5.09229, -1.79327)
+
+[node name="Ball6" parent="." instance=ExtResource("4_rgh2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.388984, 5.09229, -1.94062)
+
+[node name="Ball5" parent="." instance=ExtResource("4_rgh2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.388984, 5.09229, -1.62909)
+
+[node name="Ball7" parent="." instance=ExtResource("4_rgh2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.241391, 5.09229, -1.42008)
+
+[node name="Ball8" parent="." instance=ExtResource("4_rgh2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.241391, 5.09229, -1.73381)
+
+[node name="Ball9" parent="." instance=ExtResource("4_rgh2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.241391, 5.09229, -1.88117)
+
+[node name="Ball10" parent="." instance=ExtResource("4_rgh2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.241391, 5.09229, -1.56964)
+
+[node name="Ball12" parent="." instance=ExtResource("4_rgh2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0665278, 5.09229, -1.64519)
+
+[node name="Ball13" parent="." instance=ExtResource("4_rgh2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0665278, 5.09229, -1.79255)
+
+[node name="Ball14" parent="." instance=ExtResource("4_rgh2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0665278, 5.09229, -1.48102)
+
+[node name="Ball15" parent="." instance=ExtResource("4_rgh2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0896037, 5.09229, -1.5573)
+
+[node name="Ball16" parent="." instance=ExtResource("4_rgh2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0896037, 5.09229, -1.70465)
+
+[node name="Ball17" parent="." instance=ExtResource("4_rgh2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.236311, 5.09229, -1.64359)

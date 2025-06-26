@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qnhkjli0ba8b"
-path.s3tc="res://.godot/imported/BillardTable_1.png-41b41753f83409323c91d6167b000ebe.s3tc.ctex"
+uid="uid://bkhqfktyxub4l"
+path.s3tc="res://.godot/imported/BillardTable_2.png-7942058243bb9ac35220c72bb56ad913.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "47b6efab7f40181984d7229feca4c818"
+"md5": "c76cef1b18830919e9b726f27df64b49"
 }
 
 [deps]
 
-source_file="res://Art/BilliardTable/BillardTable_1.png"
-dest_files=["res://.godot/imported/BillardTable_1.png-41b41753f83409323c91d6167b000ebe.s3tc.ctex"]
+source_file="res://Art/BilliardTable/BillardTable_2.png"
+dest_files=["res://.godot/imported/BillardTable_2.png-7942058243bb9ac35220c72bb56ad913.s3tc.ctex"]
 
 [params]
 

@@ -4,17 +4,18 @@
 [ext_resource type="Script" uid="uid://15f3cffladb2" path="res://Scripts/Ball.gd" id="1_hdy6r"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hdy6r"]
-friction = 20.0
-bounce = 0.14
+bounce = 0.8
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kln2b"]
 radius = 0.0783063
 
 [node name="Ball" type="RigidBody3D" groups=["MainBall"]]
+axis_lock_angular_y = true
 physics_material_override = SubResource("PhysicsMaterial_hdy6r")
 continuous_cd = true
-max_contacts_reported = 2
+max_contacts_reported = 5
 linear_damp = 1.0
+angular_damp_mode = 1
 script = ExtResource("1_hdy6r")
 
 [node name="blockbench_export" parent="." instance=ExtResource("1_f8b65")]

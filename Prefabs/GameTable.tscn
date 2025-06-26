@@ -1,11 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://8p1hkdfejvo3"]
+[gd_scene load_steps=6 format=3 uid="uid://8p1hkdfejvo3"]
 
 [ext_resource type="PackedScene" uid="uid://drc40np5nvhtw" path="res://Art/BilliardTable/BillardTable.gltf" id="1_55asd"]
+[ext_resource type="PhysicsMaterial" uid="uid://h1unud87s2tf" path="res://PhysicsMaterial/TableBoundaryPhysicsMaterial.tres" id="2_dvht7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_55asd"]
+friction = 0.27
+rough = true
+bounce = 0.02
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dvht7"]
 size = Vector3(5, 3.41785, 6.66125)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_55asd"]
+size = Vector3(0.541077, 1, 5.84521)
+
 [node name="Table" type="StaticBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_55asd")
 
 [node name="blockbench_export" parent="." instance=ExtResource("1_55asd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
@@ -13,3 +23,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.29429, -0.00140381)
 shape = SubResource("BoxShape3D_dvht7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.42056, 4.67099, 0)
+physics_material_override = ExtResource("2_dvht7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.167877, 0, 0.0773926)
+shape = SubResource("BoxShape3D_55asd")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.76088, 4.67099, 0)
+physics_material_override = ExtResource("2_dvht7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.167877, 0, 0.0773926)
+shape = SubResource("BoxShape3D_55asd")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.00917935, 4.67099, 3.08698)
+physics_material_override = ExtResource("2_dvht7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.167877, 0, 0.0773926)
+shape = SubResource("BoxShape3D_55asd")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.00917935, 4.67099, -3.28171)
+physics_material_override = ExtResource("2_dvht7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.167877, 0, 0.0773926)
+shape = SubResource("BoxShape3D_55asd")

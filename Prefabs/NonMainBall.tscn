@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg5vm838kifok"]
+
+[ext_resource type="Script" uid="uid://15f3cffladb2" path="res://Scripts/Ball.gd" id="1_fe54u"]
+[ext_resource type="PackedScene" uid="uid://dqj27xr42kfqt" path="res://Art/BilliardBall2/ball2.gltf" id="2_fe54u"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fe54u"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kln2b"]
+radius = 0.0783063
+
+[node name="Ball" type="RigidBody3D"]
+axis_lock_angular_y = true
+physics_material_override = SubResource("PhysicsMaterial_fe54u")
+continuous_cd = true
+max_contacts_reported = 5
+linear_damp = 1.0
+angular_damp_mode = 1
+script = ExtResource("1_fe54u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_kln2b")
+
+[node name="blockbench_export" parent="." instance=ExtResource("2_fe54u")]

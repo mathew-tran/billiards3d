@@ -23,19 +23,22 @@ var MinStrength = 0
 var MaxStrength = 100
 var bGrowing = true
 var CurrentStrength = 0
-var StrengthRate = 50
+var StrengthRate = 200
 
 func _ready() -> void:
 	MoveToBall()
 	Finder.GetMainBall().StateUpdate.connect(OnStateUpdate)
+	OriginalPosition = $stick.position
 	
 func MoveToBall():
-	
+	$Camera3D.rotation_degrees.x = CameraRotationLimit.x
+	$stick.rotation = Vector3.ZERO
 	var newPosition = Finder.GetMainBall().global_position
 	global_position = newPosition
 	global_position += Vector3(0, .01, .0)
 	global_position -= CurrentDirection * OffsetAmount
 	var newDirection = (Finder.GetMainBall().global_position - newPosition).normalized()
+	
 	look_at(Finder.GetMainBall().global_position)
 	print(CurrentDirection)
 	
@@ -102,20 +105,20 @@ func CanShoot():
 	
 func ShootBall():
 		CurrentState = STATE.WAITING
-		OriginalPosition = $stick.global_position
 		var tween = get_tree().create_tween()
-		tween.tween_property($stick, "global_position", lerp($stick.global_position, Finder.GetMainBall().global_position, .1), .1)
+		tween.tween_property($stick, "position", lerp($stick.position, $stick.position + Vector3.FORWARD * 2, .1), .1)
 		await tween.finished
 		Finder.GetMainBall().apply_impulse(GetPower())
 		tween = get_tree().create_tween()
-		tween.tween_property($stick, "global_position", OriginalPosition, .1)
+		tween.tween_property($stick, "position", OriginalPosition, .1)
 		await tween.finished
+		$stick.rotation = Vector3.UP
 		
 func GetPower():
 	var direction = -transform.basis.z
 	direction.y = 0
 	direction = direction.normalized()
-	var value = lerp(1, 15, CurrentStrength/MaxStrength)
+	var value = lerp(3, 25, CurrentStrength/MaxStrength)
 	return direction * value
 		
 func OnStateUpdate(state : Ball.MOVE_STATE):
